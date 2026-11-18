@@ -1,0 +1,12 @@
+{
+  "name": "roblox-account-scanner-v3-1",
+  "version": "3.1.0",
+  "description": "Roblox public account scanner with advanced profile intelligence",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "express": "^4.21.2"
+  }
+}

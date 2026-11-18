@@ -1,0 +1,397 @@
+:root{color-scheme:dark;--bg:#090b10;--panel:#121722;--panel2:#0c121d;--line:#273143;--text:#f3f5f8;--muted:#9aa6b7;--accent:#8b5cf6;--accent2:#b49aff}
+*{box-sizing:border-box}body{margin:0;min-height:100vh;background:radial-gradient(ellipse at 15% 0,#211b3b 0,transparent 38%),radial-gradient(ellipse at 90% 15%,#14253b 0,transparent 30%),var(--bg);color:var(--text);font:15px/1.5 system-ui,-apple-system,Segoe UI,sans-serif}
+.wrap{width:min(1120px,calc(100% - 28px));margin:30px auto 54px}.topbar{display:flex;justify-content:space-between;align-items:center;gap:16px;margin-bottom:22px}.eyebrow{font-size:10px;letter-spacing:2px;color:var(--accent2);font-weight:850}.topbar h1{font-size:clamp(25px,5vw,38px);line-height:1.15;margin:7px 0}.topbar h1 span{font-size:.55em;color:var(--accent2);vertical-align:middle}.muted,.small{color:var(--muted)}.small{font-size:12px}.topbar p{margin:5px 0}.version-pill{white-space:nowrap;border:1px solid #57458c;color:#cbbaff;background:#241d3a;padding:7px 11px;border-radius:999px;font-size:10px;font-weight:800;letter-spacing:.7px}
+.panel{background:rgba(18,23,34,.94);border:1px solid var(--line);border-radius:16px;padding:19px;margin:15px 0;box-shadow:0 12px 35px #0003}.search-panel label{display:block;font-weight:750;margin-bottom:8px}.search-row{display:flex;gap:10px}input,select{min-width:0;background:#090e17;border:1px solid #354158;color:white;padding:12px 13px;border-radius:10px;font:inherit}input:focus,select:focus{outline:2px solid #8060d9;outline-offset:1px}.search-row input{flex:1}button{border:0;border-radius:10px;padding:11px 16px;background:var(--accent);color:white;font-weight:750;font:inherit;cursor:pointer}button:disabled{opacity:.45;cursor:not-allowed}.secondary{background:#273248;border:1px solid #3a4862}.status{font-size:13px;color:var(--muted);margin:11px 0 0}.profile{display:flex;align-items:center;gap:15px}.profile img{width:76px;height:76px;object-fit:cover;border-radius:15px;background:#222}.profile-info h2{margin:0 0 3px}.profile-info p{margin:2px 0}.description{white-space:pre-wrap;color:#c4cbd6;margin:15px 0}.meta{display:flex;flex-wrap:wrap;gap:15px;color:var(--muted);font-size:12px;margin-bottom:15px}.hidden{display:none!important}
+.section-heading{display:flex;justify-content:space-between;align-items:end;gap:12px;margin:27px 2px 13px}.section-heading h2{font-size:24px;margin:3px 0}.summary-text{font-size:12px;text-align:right}.stats-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px}.stat-card{background:linear-gradient(145deg,#171d2b,#101520);border:1px solid var(--line);border-radius:14px;padding:16px;min-width:0}.stat-card span{display:block;color:var(--muted);font-size:12px}.stat-card strong{display:block;font-size:clamp(19px,3vw,26px);margin:7px 0 3px;overflow-wrap:anywhere}.stat-card small{color:#78869a;font-size:11px}.analytics-panel{margin-top:14px}.panel-heading h3,.gallery-heading h3{font-size:18px;margin:0}.panel-heading p,.gallery-heading p{font-size:12px;margin:3px 0}.chart-list{display:grid;gap:13px;margin-top:17px}.chart-row{display:grid;grid-template-columns:minmax(90px,180px) 1fr auto;align-items:center;gap:12px}.chart-name{font-size:12px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.chart-track{height:10px;background:#080d15;border:1px solid #273143;border-radius:999px;overflow:hidden}.chart-fill{height:100%;background:linear-gradient(90deg,#7552d7,#b69bff);border-radius:999px;min-width:2px}.chart-value{font-size:12px;color:#d8d0ff;font-variant-numeric:tabular-nums}.gallery-panel{margin-top:14px}.gallery-heading{display:flex;justify-content:space-between;align-items:center;gap:12px}.toolbar{display:flex;gap:10px;margin:17px 0}.toolbar input{flex:1}.toolbar select{width:180px}.items-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:13px}.item-card{min-width:0;overflow:hidden;background:#0c121d;border:1px solid #293448;border-radius:13px;transition:border-color .15s,transform .15s}.item-card:hover{border-color:#7660b2;transform:translateY(-2px)}.item-image-wrap{height:150px;background:radial-gradient(circle,#1b2638,#0b111b 70%);display:flex;align-items:center;justify-content:center;padding:10px}.item-image{width:100%;height:100%;object-fit:contain}.image-fallback{font-size:12px;color:#7f8ca0;text-align:center}.item-info{padding:12px}.item-name{font-weight:750;font-size:13px;line-height:1.35;min-height:35px;overflow-wrap:anywhere}.item-rap{font-size:15px;font-weight:850;color:#c8b7ff;margin-top:9px}.item-meta{font-size:11px;color:var(--muted);margin-top:4px;overflow-wrap:anywhere}.item-age{font-size:10px;color:#8390a3;margin-top:5px}.empty-state{grid-column:1/-1;border:1px dashed #354158;border-radius:12px;padding:28px;text-align:center;color:var(--muted);font-size:13px}.load-row{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin-top:18px}.load-row span{font-size:12px}footer{text-align:center;color:#758196;font-size:12px;padding:23px 8px}
+@media(max-width:850px){.stats-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.items-grid{grid-template-columns:repeat(3,minmax(0,1fr))}}@media(max-width:560px){.wrap{margin-top:20px}.topbar{align-items:flex-start}.version-pill{font-size:9px;padding:6px 8px}.search-row{flex-direction:column}.search-row button{width:100%}.panel{padding:15px}.section-heading{align-items:flex-start;flex-direction:column}.summary-text{text-align:left}.stats-grid{gap:8px}.stat-card{padding:12px}.items-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:9px}.item-image-wrap{height:125px}.item-info{padding:10px}.toolbar{flex-direction:column}.toolbar select{width:100%}.gallery-heading{align-items:flex-start}.chart-row{grid-template-columns:minmax(75px,105px) 1fr auto;gap:7px}.chart-name,.chart-value{font-size:10px}}
+
+
+.history-panel{margin-top:15px}.history-panel h3,.history-panel h4{margin:0}.history-status{font-size:12px;margin:12px 0}.history-toolbar{display:grid;grid-template-columns:1fr;gap:7px;margin-top:14px}.history-toolbar label{font-size:12px;font-weight:700;color:var(--muted)}.history-toolbar select{width:100%;background:#0b111c;color:var(--text);border:1px solid var(--line);border-radius:9px;padding:11px;font:inherit}.history-list-heading{display:flex;justify-content:space-between;align-items:center;gap:10px;margin:22px 0 10px}.history-list{display:grid;gap:8px}.history-row{display:flex;align-items:center;justify-content:space-between;gap:12px;background:#0b111c;border:1px solid var(--line);border-radius:10px;padding:11px}.history-row strong{display:block;font-size:13px}.history-row small{display:block;color:var(--muted);font-size:11px}.history-row button{padding:7px 10px;font-size:12px;background:#38232b;border:1px solid #65404c}.history-delta-positive{color:#76d6a0!important}.history-delta-negative{color:#ff9b9b!important}.history-delta-neutral{color:var(--muted)!important}
+@media(max-width:560px){.history-list-heading{align-items:flex-start;flex-direction:column}.gallery-heading{align-items:flex-start;flex-direction:column}}
+
+.filter-range{display:grid;grid-template-columns:auto minmax(90px,1fr) auto minmax(90px,1fr) auto;align-items:center;gap:9px;margin:10px 0 14px}.filter-range label{font-size:12px;color:var(--muted);font-weight:700}.filter-range input{width:100%;padding:10px}.insights-strip{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:9px;margin:12px 0}.insights-strip>div{background:#0b111c;border:1px solid var(--line);border-radius:10px;padding:11px}.insights-strip span{display:block;color:var(--muted);font-size:11px}.insights-strip strong{display:block;font-size:17px;margin-top:4px;overflow-wrap:anywhere;font-variant-numeric:tabular-nums}
+@media(max-width:600px){.filter-range{grid-template-columns:1fr 1fr}.filter-range label{align-self:end}.filter-range button{grid-column:1/-1}.insights-strip{grid-template-columns:1fr}}
+
+.profile-actions{display:flex;flex-wrap:wrap;gap:9px;margin-top:12px}.extended-profile{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:18px}.extended-column{min-width:0;background:#0b111c;border:1px solid var(--line);border-radius:12px;padding:13px}.extended-column h3{margin:0 0 5px;font-size:16px}.public-list{display:grid;gap:8px;margin-top:10px}.public-card{padding:11px;background:#121a29;border:1px solid #2b3850;border-radius:10px;overflow-wrap:anywhere}.public-card strong{font-size:13px}.public-card p{margin:5px 0}.public-description{white-space:pre-wrap;max-height:70px;overflow:auto}.public-card a{font-size:12px;color:#c7b5ff;text-decoration:none}.public-card a:hover{text-decoration:underline}.tracker-panel{margin:18px 0;padding:14px;background:#0b111c;border:1px solid var(--line);border-radius:12px}.tracker-panel h4{margin:0 0 4px}.tracker-panel h5{margin:17px 0 7px;font-size:12px;color:#c9d0dc}.tracker-stats{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;margin-top:12px}.tracker-stats>div{background:#121a29;border:1px solid #2b3850;border-radius:9px;padding:10px}.tracker-stats span{display:block;color:var(--muted);font-size:11px}.tracker-stats strong{display:block;margin-top:4px;font-size:17px;overflow-wrap:anywhere}.trend-chart{display:grid;gap:7px}.trend-bar-row{display:grid;grid-template-columns:82px minmax(50px,1fr) auto;align-items:center;gap:9px}.trend-date,.trend-value{font-size:10px;color:var(--muted);font-variant-numeric:tabular-nums}.trend-track{height:9px;background:#080d15;border:1px solid #273143;border-radius:99px;overflow:hidden}.trend-fill{height:100%;background:linear-gradient(90deg,#7552d7,#b69bff);border-radius:99px}.positive{color:#76d6a0!important}.negative{color:#ff9b9b!important}
+@media(max-width:650px){.extended-profile{grid-template-columns:1fr}.tracker-stats{grid-template-columns:1fr}.profile-actions button{flex:1}.trend-bar-row{grid-template-columns:72px minmax(35px,1fr) auto}}
+
+.creator-summary{margin:12px 0;padding:13px;border:1px solid var(--line);border-radius:12px;background:#0b111c}.creator-summary h3{margin:0 0 10px;font-size:15px}.creator-stat-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:8px}.creator-stat-grid>div{padding:10px;border-radius:9px;background:#121a29;border:1px solid #2b3850}.creator-stat-grid span{display:block;font-size:11px;color:var(--muted)}.creator-stat-grid strong{display:block;margin-top:5px;font-size:17px;overflow-wrap:anywhere}
+
+/* =====================================
+   ROBLOX ACCOUNT SCANNER V3.0
+   OBSIDIAN INTELLIGENCE THEME
+===================================== */
+
+:root {
+  color-scheme: dark;
+  --bg: #080b10;
+  --panel: #111720;
+  --panel2: #0b111a;
+  --line: #263447;
+  --text: #f0f5fc;
+  --muted: #91a0b3;
+  --accent: #258bff;
+  --accent2: #64b5ff;
+}
+
+body {
+  background:
+    radial-gradient(ellipse at 10% 0%, #102744 0%, transparent 36%),
+    radial-gradient(ellipse at 95% 10%, #102037 0%, transparent 30%),
+    #080b10;
+  color: var(--text);
+}
+
+.wrap {
+  width: min(1200px, calc(100% - 30px));
+  margin: 32px auto 55px;
+}
+
+.topbar {
+  padding: 22px;
+  background: linear-gradient(120deg, #111c2b, #10151f);
+  border: 1px solid #263c55;
+  border-radius: 18px;
+  box-shadow: 0 15px 45px #0005;
+}
+
+.eyebrow {
+  color: #55adff;
+  letter-spacing: 2.5px;
+}
+
+.topbar h1 {
+  letter-spacing: -1px;
+}
+
+.topbar h1 span {
+  color: #64b5ff;
+}
+
+.version-pill {
+  background: #102744;
+  border: 1px solid #2869a8;
+  color: #8bcaff;
+}
+
+.panel {
+  background: linear-gradient(145deg, #131c28, #0d131d);
+  border: 1px solid #26374b;
+  border-radius: 16px;
+  box-shadow: 0 12px 35px #0004;
+}
+
+input, select {
+  background: #090f18;
+  border: 1px solid #30445c;
+  color: #f2f7ff;
+  border-radius: 10px;
+}
+
+input:focus, select:focus {
+  outline: 2px solid #258bff;
+  outline-offset: 2px;
+  border-color: #258bff;
+}
+
+button {
+  background: linear-gradient(135deg, #1675dc, #258bff);
+  color: white;
+  border-radius: 10px;
+  font-weight: 750;
+  transition: filter .18s, transform .18s;
+}
+
+button:hover:not(:disabled) {
+  filter: brightness(1.15);
+  transform: translateY(-1px);
+}
+
+.secondary {
+  background: #17283b;
+  border: 1px solid #315477;
+  color: #c4e2ff;
+}
+
+.stat-card {
+  background: linear-gradient(145deg, #172333, #101722);
+  border: 1px solid #2b4058;
+  border-radius: 15px;
+  box-shadow: 0 8px 22px #0003;
+}
+
+.stat-card strong {
+  color: #eaf5ff;
+}
+
+.chart-track, .trend-track {
+  background: #080e17;
+  border-color: #26374b;
+}
+
+.chart-fill, .trend-fill {
+  background: linear-gradient(90deg, #1475d5, #54b4ff);
+}
+
+.chart-value, .item-rap {
+  color: #72bdff;
+}
+
+.item-card {
+  background: #101925;
+  border: 1px solid #293d53;
+  border-radius: 14px;
+}
+
+.item-card:hover {
+  border-color: #258bff;
+  box-shadow: 0 8px 25px #087bff20;
+}
+
+.item-image-wrap {
+  background: radial-gradient(circle, #1b3048, #0b111b 72%);
+}
+
+.extended-column,
+.tracker-panel,
+.creator-summary {
+  background: #0c1520;
+  border-color: #293d53;
+}
+
+.public-card,
+.tracker-stats > div,
+.creator-stat-grid > div {
+  background: #142132;
+  border-color: #2b4058;
+}
+
+.public-card a {
+  color: #70baff;
+}
+
+.common-item,
+.history-row,
+.insights-strip > div {
+  background: #101b29;
+  border-color: #293d53;
+}
+
+.profile img {
+  border: 2px solid #258bff;
+  box-shadow: 0 0 18px #258bff30;
+}
+
+footer {
+  border-top: 1px solid #1e2b3b;
+  margin-top: 28px;
+}
+
+@media(max-width: 650px) {
+  .wrap {
+    width: calc(100% - 18px);
+    margin-top: 12px;
+  }
+
+  .topbar {
+    padding: 16px;
+    border-radius: 14px;
+  }
+
+  .topbar h1 {
+    font-size: 25px;
+  }
+
+  .panel {
+    border-radius: 13px;
+  }
+
+  .stat-card {
+    border-radius: 12px;
+  }
+}
+
+/* END V3.0 THEME */
+
+/* V3.0 ROBLOX PROFILE HERO */
+
+#profileCard {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  background: #101b2a;
+  border-color: #315477;
+  min-height: 230px;
+}
+
+.profile-backdrop {
+  position: absolute;
+  inset: -20px;
+  z-index: -1;
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  filter: blur(18px);
+  opacity: .38;
+  transform: scale(1.08);
+  pointer-events: none;
+}
+
+.profile-backdrop::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    90deg,
+    #080d16ee,
+    #0a1422bb,
+    #080d16dd
+  );
+}
+
+#profileCard > :not(.profile-backdrop) {
+  position: relative;
+  z-index: 1;
+}
+
+#profileCard .profile {
+  gap: 22px;
+  padding: 12px 0;
+}
+
+#profileCard .profile img {
+  width: 120px;
+  height: 120px;
+  border-radius: 20px;
+  border: 2px solid #66baff;
+  background: #17283b;
+  box-shadow: 0 0 28px #168bff66;
+}
+
+#profileCard .profile-info h2 {
+  font-size: clamp(23px, 4vw, 32px);
+  color: #ffffff;
+  text-shadow: 0 2px 12px #000;
+}
+
+#profileCard .profile-info p,
+#profileCard .description,
+#profileCard .meta {
+  text-shadow: 0 2px 8px #000;
+}
+
+@media(max-width:560px) {
+  #profileCard .profile img {
+    width: 94px;
+    height: 94px;
+    border-radius: 16px;
+  }
+
+  #profileCard .profile {
+    gap: 14px;
+  }
+}
+
+/* END ROBLOX PROFILE HERO */
+
+/* V3.0 PROFILE BACKGROUND LAYER FIX */
+
+#profileCard {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  background: #101b2a;
+}
+
+#profileCard .profile-backdrop {
+  z-index: 0;
+  opacity: .48;
+}
+
+#profileCard .profile-backdrop::after {
+  background: linear-gradient(
+    90deg,
+    rgba(5,12,23,.65),
+    rgba(5,12,23,.25),
+    rgba(5,12,23,.65)
+  );
+}
+
+#profileCard > :not(.profile-backdrop) {
+  position: relative;
+  z-index: 2;
+}
+
+/* END V3.0 PROFILE BACKGROUND FIX */
+
+/* V3.1 SOCIAL INTELLIGENCE */
+.social-intelligence {
+  margin: 16px 0;
+  padding: 14px;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  background: rgba(9, 17, 30, .75);
+}
+
+.social-intelligence h3 {
+  margin: 0 0 8px;
+  font-size: 16px;
+}
+
+.social-intelligence .creator-stat-grid {
+  margin-top: 12px;
+}
+/* END V3.1 SOCIAL INTELLIGENCE */
+
+/* V3.1 ACCOUNT INTELLIGENCE */
+.account-intelligence {
+  margin: 16px 0;
+  padding: 16px;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  background: rgba(9, 17, 30, .85);
+}
+
+.intelligence-heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.intelligence-heading h3 {
+  margin: 0 0 6px;
+  font-size: 16px;
+}
+
+#intelligenceScore {
+  font-size: 25px;
+  color: #70c8ff;
+  white-space: nowrap;
+}
+
+#intelligenceDetails {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+  gap: 10px;
+  margin: 14px 0;
+}
+
+.intelligence-item {
+  padding: 11px;
+  border: 1px solid var(--line);
+  border-radius: 9px;
+  background: rgba(20, 35, 55, .65);
+}
+
+.intelligence-item span {
+  display: block;
+  font-size: 12px;
+  color: var(--muted);
+  margin-bottom: 6px;
+}
+
+.intelligence-item strong {
+  font-size: 14px;
+}
+/* END V3.1 ACCOUNT INTELLIGENCE */

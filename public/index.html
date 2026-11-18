@@ -1,0 +1,190 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#090b10">
+  <title>Roblox Account Scanner V3.1</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main class="wrap">
+    <header class="topbar">
+      <div>
+        <div class="eyebrow">ROBLOX ACCOUNT INTELLIGENCE</div>
+        <h1>Roblox Account Scanner <span>V3.1</span></h1>
+        <p class="muted">Advanced Analytics, Account Intelligence &amp; Creator Insights</p>
+      </div>
+      <div class="version-pill">V3.1 RELEASE</div>
+    </header>
+
+    <section class="panel search-panel">
+      <label for="username">Username Roblox</label>
+      <div class="search-row">
+        <input id="username" maxlength="20" placeholder="Masukkan username Roblox" autocomplete="off">
+        <button id="scanProfile">Scan Profil</button>
+      </div>
+      <p id="status" class="status" aria-live="polite">Masukkan username untuk memulai.</p>
+    </section>
+
+    <section id="profileCard" class="panel profile-panel hidden">
+      <div class="profile">
+        <img id="avatar" alt="Avatar Roblox">
+        <div class="profile-info">
+          <h2 id="displayName">-</h2>
+          <p id="handle" class="muted">-</p>
+          <p id="userId" class="small"></p>
+        </div>
+      </div>
+      <p id="description" class="description"></p>
+      <div class="meta"><span id="created"></span><span id="banned"></span></div>
+
+      <section class="social-intelligence">
+        <h3>Social Intelligence</h3>
+        <p class="small muted">Statistik sosial publik akun Roblox.</p>
+        <button id="loadSocialInsights" class="secondary">Muat Statistik Sosial</button>
+        <p id="socialStatus" class="small muted" aria-live="polite">Belum dimuat.</p>
+        <div id="socialInsights" class="creator-stat-grid"></div>
+      </section>
+
+      <section class="account-intelligence">
+        <div class="intelligence-heading">
+          <div>
+            <h3>Account Intelligence</h3>
+            <p class="small muted">Analisis kelengkapan informasi publik.</p>
+          </div>
+          <strong id="intelligenceScore">-- / 100</strong>
+        </div>
+        <p id="intelligenceStatus" class="small muted" aria-live="polite">
+          Menunggu pemeriksaan data.
+        </p>
+        <div id="intelligenceDetails"></div>
+        <p class="small muted">
+          Skor bukan penilaian keamanan, kejujuran, atau kepercayaan pemilik akun.
+        </p>
+      </section>
+
+      <div class="profile-actions">
+        <button id="scanInventory" class="secondary">Scan Inventory</button>
+        <button id="loadExtendedProfile" class="secondary">Muat Community &amp; Creations</button>
+        <button id="exportFullReport" class="secondary" disabled>Ekspor Laporan Lengkap</button>
+      </div>
+      <p id="extendedStatus" class="small muted" aria-live="polite">Data tambahan dimuat saat tombol ditekan.</p>
+      <div id="creatorSummary" class="creator-summary hidden"></div>
+      <section id="extendedProfile" class="extended-profile hidden">
+        <div class="extended-column">
+          <h3>Community / Group</h3>
+          <p class="small muted">Community yang diikuti akun; role Owner ditandai jika data publik menunjukkan rank tertinggi.</p>
+          <div id="communityList" class="public-list"></div>
+        </div>
+        <div class="extended-column">
+          <h3>Experience / Map Publik</h3>
+          <p class="small muted">Experience publik yang dibuat akun, bukan daftar place privat.</p>
+          <div id="creationList" class="public-list"></div>
+          <button id="loadMoreCreations" class="secondary" disabled>Muat experience berikutnya</button>
+        </div>
+      </section>
+    </section>
+
+    <section id="inventoryPanel" class="hidden">
+      <div class="section-heading">
+        <div><div class="eyebrow">COLLECTION OVERVIEW</div><h2>Inventory Analytics</h2></div>
+        <span id="inventorySummary" class="muted summary-text">Belum ada hasil.</span>
+      </div>
+
+      <div class="stats-grid">
+        <article class="stat-card"><span>Total item dimuat</span><strong id="totalItems">0</strong><small>Collectibles publik</small></article>
+        <article class="stat-card"><span>Total estimasi RAP</span><strong id="totalRap">0</strong><small>Jumlah RAP item yang dimuat</small></article>
+        <article class="stat-card"><span>Rata-rata RAP</span><strong id="averageRap">0</strong><small>RAP per item</small></article>
+        <article class="stat-card"><span>Item RAP tertinggi</span><strong id="highestRap">—</strong><small id="highestRapName">Belum tersedia</small></article>
+      </div>
+
+      <section class="panel analytics-panel">
+        <div class="panel-heading"><div><h3>Top 5 Item berdasarkan RAP</h3><p class="muted">Perbandingan item dengan RAP tertinggi dari item yang sudah dimuat</p></div></div>
+        <div id="topRapChart" class="chart-list"><p class="muted">Belum ada data untuk ditampilkan.</p></div>
+      </section>
+
+      <section class="panel gallery-panel">
+        <div class="gallery-heading">
+          <div><h3>Inventory Gallery</h3><p class="muted">Koleksi ditampilkan dalam kartu bergambar</p></div>
+          <button id="exportCsv" class="secondary" disabled>Ekspor CSV</button>
+        </div>
+        <div class="toolbar">
+          <input id="filterItems" type="search" placeholder="Cari nama item atau Asset ID..." aria-label="Cari item">
+          <select id="sortItems" aria-label="Urutkan item">
+            <option value="rap-desc">RAP tertinggi</option>
+            <option value="rap-asc">RAP terendah</option>
+            <option value="name-asc">Nama A–Z</option>
+          </select>
+        </div>
+        <div class="filter-range">
+          <label for="minRap">RAP minimum</label>
+          <input id="minRap" type="number" min="0" step="1" placeholder="0">
+          <label for="maxRap">RAP maksimum</label>
+          <input id="maxRap" type="number" min="0" step="1" placeholder="Tanpa batas">
+          <button id="resetFilters" class="secondary" type="button">Reset filter</button>
+        </div>
+        <div class="insights-strip">
+          <div><span>Item sesuai filter</span><strong id="filteredCount">0</strong></div>
+          <div><span>Total RAP sesuai filter</span><strong id="filteredRap">0</strong></div>
+          <div><span>RAP tertinggi dalam hasil</span><strong id="filteredHighest">—</strong></div>
+        </div>
+        <p id="filterNotice" class="small muted" aria-live="polite">Filter RAP diterapkan pada item yang sudah dimuat.</p>
+        <div id="itemsGrid" class="items-grid"><div class="empty-state">Belum ada item. Tekan Scan Inventory.</div></div>
+        <div class="load-row">
+          <button id="loadMore" class="secondary" disabled>Muat item berikutnya</button>
+          <span id="pageStatus" class="small muted"></span>
+        </div>
+      </section>
+
+      <section class="panel history-panel">
+        <div class="gallery-heading">
+          <div>
+            <h3>Scan History &amp; Reports</h3>
+            <p class="muted">Simpan snapshot inventaris dan bandingkan hasil scan dari waktu ke waktu</p>
+          </div>
+          <button id="saveSnapshot" class="secondary" disabled>Simpan snapshot</button>
+        </div>
+        <p id="historyStatus" class="muted history-status" aria-live="polite">Lakukan scan inventaris untuk menyimpan snapshot.</p>
+        <div class="history-toolbar">
+          <label for="historySelectA">Snapshot pertama</label>
+          <select id="historySelectA"><option value="">Pilih snapshot</option></select>
+          <label for="historySelectB">Snapshot kedua</label>
+          <select id="historySelectB"><option value="">Pilih snapshot</option></select>
+          <button id="compareSnapshots" class="secondary">Bandingkan snapshot</button>
+        </div>
+        <div id="snapshotComparison" class="hidden">
+          <div class="compare-stats">
+            <article class="stat-card"><span>Perubahan jumlah item</span><strong id="snapshotItemDelta">—</strong><small id="snapshotItemDetail"></small></article>
+            <article class="stat-card"><span>Perubahan total RAP</span><strong id="snapshotRapDelta">—</strong><small id="snapshotRapDetail"></small></article>
+          </div>
+          <p id="snapshotComparisonNote" class="small muted"></p>
+        </div>
+        <section class="tracker-panel">
+          <h4>Inventory Value Tracker</h4>
+          <p class="small muted">Grafik berdasarkan snapshot yang tersimpan untuk akun yang sedang dipilih. Simpan snapshot berkala agar tren terlihat.</p>
+          <div class="tracker-stats">
+            <div><span>Jumlah snapshot</span><strong id="trackerSnapshotCount">0</strong></div>
+            <div><span>Perubahan RAP</span><strong id="trackerRapDelta">—</strong></div>
+            <div><span>Perubahan item</span><strong id="trackerItemDelta">—</strong></div>
+          </div>
+          <h5>Total RAP per snapshot</h5><div id="rapTrendChart" class="trend-chart"></div>
+          <h5>Jumlah item per snapshot</h5><div id="itemTrendChart" class="trend-chart"></div>
+          <p id="trackerNote" class="small muted">Belum ada data snapshot untuk akun ini.</p>
+        </section>
+        <div class="history-list-heading">
+          <h4>Riwayat tersimpan</h4>
+          <button id="exportHistory" class="secondary" disabled>Ekspor riwayat JSON</button>
+        </div>
+        <div id="historyList" class="history-list">
+          <p class="muted small">Belum ada snapshot tersimpan.</p>
+        </div>
+        <p class="small muted">Riwayat disimpan secara lokal di browser perangkat ini. Menghapus data browser dapat menghapus riwayat.</p>
+      </section>
+    </section>
+
+    <footer>Hanya menggunakan data publik Roblox. Tidak meminta password, cookie, session token, atau kode 2FA.</footer>
+  </main>
+  <script src="app.js"></script>
+</body>
+</html>
