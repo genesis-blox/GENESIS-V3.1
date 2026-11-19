@@ -395,3 +395,145 @@ footer {
   font-size: 14px;
 }
 /* END V3.1 ACCOUNT INTELLIGENCE */
+
+/* GENESIS - BUMBLEBEE & AUTOBOT COLOR THEME */
+:root {
+  color-scheme: dark;
+  --bg: #090909;
+  --panel: #171717;
+  --panel2: #101010;
+  --line: #51451a;
+  --text: #fff8df;
+  --muted: #c2b994;
+  --accent: #f5c400;
+  --accent2: #ffe16b;
+}
+
+body {
+  background:
+    radial-gradient(ellipse at 12% 0%, #594600 0%, transparent 36%),
+    radial-gradient(ellipse at 95% 10%, #4b1717 0%, transparent 30%),
+    #090909;
+  color: var(--text);
+}
+
+.topbar {
+  background: linear-gradient(120deg, #302600, #151515);
+  border: 1px solid #806500;
+}
+
+.eyebrow,
+.topbar h1 span {
+  color: #ffdc36;
+}
+
+.version-pill {
+  background: #302600;
+  border: 1px solid #a78600;
+  color: #ffe16b;
+}
+
+.panel {
+  background: linear-gradient(145deg, #202020, #111111);
+  border-color: #51451a;
+}
+
+button {
+  background: linear-gradient(135deg, #d9a900, #ffdf36);
+  color: #171000;
+  font-weight: 800;
+}
+
+button:hover:not(:disabled) {
+  filter: brightness(1.15);
+}
+
+.secondary {
+  background: #351919;
+  border: 1px solid #8c3030;
+  color: #ffdada;
+}
+
+.stat-card {
+  background: linear-gradient(145deg, #302600, #171717);
+  border-color: #705900;
+}
+
+.stat-card strong,
+.chart-value,
+.item-rap {
+  color: #ffdf4d;
+}
+
+.chart-fill,
+.trend-fill {
+  background: linear-gradient(90deg, #c79500, #ffe45c);
+}
+
+.item-card {
+  background: #171717;
+  border-color: #594800;
+}
+
+.item-card:hover {
+  border-color: #ffdc36;
+}
+
+.profile img {
+  border-color: #f5c400;
+  box-shadow: 0 0 18px #f5c40045;
+}
+
+.public-card a {
+  color: #ffe16b;
+}
+
+#intelligenceScore {
+  color: #ffdf4d;
+}
+
+/* GENESIS WALLPAPER */
+body {
+  background:
+    linear-gradient(
+      rgba(5, 5, 5, 0.78),
+      rgba(5, 5, 5, 0.88)
+    ),
+    url("/genesis-wallpaper.png") center top / cover fixed no-repeat,
+    #090909;
+  background-color: #090909;
+}
+
+.panel {
+  background: rgba(20, 20, 20, 0.92);
+  backdrop-filter: blur(8px);
+}
+
+.topbar {
+  background: rgba(35, 28, 5, 0.88);
+  backdrop-filter: blur(8px);
+}
+/* END GENESIS WALLPAPER */
+
+/* GENESIS G LOGO BACKGROUND */
+body {
+  background:
+    linear-gradient(
+      rgba(5, 5, 5, 0.58),
+      rgba(5, 5, 5, 0.78)
+    ),
+    url("/genesis-logo.png") center center / cover fixed no-repeat,
+    #090909;
+  background-color: #090909;
+}
+
+.panel {
+  background: rgba(20, 20, 20, 0.90);
+  backdrop-filter: blur(8px);
+}
+
+.topbar {
+  background: rgba(35, 28, 5, 0.88);
+  backdrop-filter: blur(8px);
+}
+/* END GENESIS G LOGO BACKGROUND */

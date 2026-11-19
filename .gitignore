@@ -11,3 +11,8 @@ tmp/
 server-v3.1-before-social.js
 public/*-backup.*
 public/*-before-social.*
+
+# Local design backups
+public/index-before-genesis.html
+public/style-before-genesis.css
+public/genesis-wallpaper.png
